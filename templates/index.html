@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Healthcare News Classification</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="card">
+
+<h1>
+🏥 Healthcare News Classifier
+</h1>
+
+<p class="subtitle">
+Classify healthcare-related news into:
+Disease Outbreak, Health Policy,
+Medical Research or Pharma Drug
+</p>
+
+<form action="/predict" method="POST">
+
+<textarea
+name="news"
+placeholder="Paste Healthcare News Here..."
+required>{{ news if news else '' }}</textarea>
+
+<button type="submit">
+
+Predict Category
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+<h2>
+Prediction
+</h2>
+
+<div class="badge">
+{{icon}}{{ prediction }}
+</div>
+
+<div class="confidence">
+
+Confidence:
+<strong>{{ confidence }}%</strong>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
